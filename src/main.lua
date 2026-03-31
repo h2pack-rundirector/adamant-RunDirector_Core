@@ -18,15 +18,24 @@ reload  = mods['SGG_Modding-ReLoad']
 config = chalk.auto('config.lua')
 public.config = config
 
+local Framework = mods['adamant-ModpackFramework']
+
 local def = {
     NUM_PROFILES    = #config.Profiles,
     defaultProfiles = {},
+    groupStyleDefault = Framework.GroupStyle.SEPARATOR,
+    sidebarOrder = Framework.SidebarOrder.CATEGORY_FIRST,
+    categoryOrder = {
+        "God Pool",
+        "Boon Bans",
+        "Encounters"
+
+    }
 }
 
 local PACK_ID = "run-director"
 
 local function init()
-    local Framework = mods['adamant-ModpackFramework']
     Framework.init({
         packId      = PACK_ID,
         windowTitle = "Run Director",
@@ -38,7 +47,6 @@ end
 
 local loader = reload.auto_single()
 modutil.once_loaded.game(function()
-    local Framework = mods['adamant-ModpackFramework']
     rom.gui.add_imgui(Framework.getRenderer(PACK_ID))
     rom.gui.add_to_menu_bar(Framework.getMenuBar(PACK_ID))
     loader.load(init, init)
