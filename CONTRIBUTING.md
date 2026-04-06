@@ -28,5 +28,5 @@ Tests live in `adamant-ModpackFramework`. Run them from there:
 
 ```bash
 cd adamant-ModpackFramework
-lua5.1 tests/all.lua
+lua5.2 tests/all.lua
 ```
