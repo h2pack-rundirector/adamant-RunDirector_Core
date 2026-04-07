@@ -4,6 +4,6 @@ Coordinator for the Run Director modpack. It owns pack identity, config, default
 
 ## Docs
 
-- [../adamant-ModpackFramework/COORDINATOR_GUIDE.md](../adamant-ModpackFramework/COORDINATOR_GUIDE.md)
-- [../adamant-ModpackFramework/HASH_PROFILE_ABI.md](../adamant-ModpackFramework/HASH_PROFILE_ABI.md)
-- [../Support/bootstrap_blueprint.md](../Support/bootstrap_blueprint.md)
+- [Framework README.md](https://github.com/h2-modpack/adamant-ModpackFramework/blob/main/README.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [Shell Bootstrap Blueprint](https://github.com/h2pack-rundirector/run-director-modpack/blob/main/Support/bootstrap_blueprint.md)

@@ -10,7 +10,11 @@ src/
 config.lua    -- Chalk config schema (ModEnabled, DebugMode, Profiles)
 ```
 
-The coordinator has no other source files. All discovery, hashing, HUD, and UI logic lives in [adamant-ModpackFramework](https://github.com/h2-modpack/ModpackFramework). See its CONTRIBUTING.md for architecture, key systems, and guidelines.
+The coordinator has no other source files. All discovery, hashing, HUD, and UI logic lives in Framework.
+
+Use these docs as the coordinator contract:
+- [Framework README.md](https://github.com/h2-modpack/adamant-ModpackFramework/blob/main/README.md)
+- [Lib README.md](https://github.com/h2-modpack/adamant-ModpackLib/blob/main/README.md) for the module-side contract the coordinator expects
 
 ## What the coordinator owns
 
