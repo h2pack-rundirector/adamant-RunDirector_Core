@@ -46,6 +46,7 @@ end
 local loader = reload.auto_single()
 modutil.once_loaded.game(function()
     rom.gui.add_imgui(Framework.getRenderer(PACK_ID))
+    rom.gui.add_always_draw_imgui(Framework.getAlwaysDrawRenderer(PACK_ID))
     rom.gui.add_to_menu_bar(Framework.getMenuBar(PACK_ID))
     loader.load(init)
 end)
