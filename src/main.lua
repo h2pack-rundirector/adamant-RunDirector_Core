@@ -22,11 +22,10 @@ local Framework = mods['adamant-ModpackFramework']
 local def = {
     NUM_PROFILES    = #config.Profiles,
     defaultProfiles = {},
-    categoryOrder = {
+    moduleOrder = {
         "God Pool",
         "Boon Bans",
-        "Biome Control"
-
+        "Biome Control",
     }
 }
 
