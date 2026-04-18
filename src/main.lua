@@ -38,6 +38,7 @@ local function init()
         config      = config,
         def         = def,
         modutil     = modutil,
+        hideHashMarker = true,
     })
 end
 
