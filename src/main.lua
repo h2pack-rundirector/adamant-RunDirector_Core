@@ -21,9 +21,9 @@ local def = {
     NUM_PROFILES    = #config.Profiles,
     defaultProfiles = {},
     moduleOrder = {
-        "God Pool",
-        "Boon Bans",
-        "Biome Control",
+        "GodPool",
+        "BoonBans",
+        "BiomeControl",
     }
 }
 
