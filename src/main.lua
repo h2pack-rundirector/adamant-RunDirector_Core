@@ -28,12 +28,37 @@ local def = {
 }
 
 local PACK_ID = "run-director"
+local frameworkParams = nil
+local rebuildInProgress = false
+
+local function rebuildFramework()
+    if rebuildInProgress or not frameworkParams then
+        return false
+    end
+
+    local Framework = rom.mods["adamant-ModpackFramework"]
+    assert(Framework and type(Framework.init) == "function",
+        "adamant-RunDirector_Core: adamant-ModpackFramework is not loaded")
+
+    rebuildInProgress = true
+    local ok, err = xpcall(function()
+        Framework.init(frameworkParams)
+    end, debug.traceback)
+    rebuildInProgress = false
+
+    if not ok then
+        error(string.format("Framework rebuild failed for pack '%s': %s", PACK_ID, tostring(err)))
+    end
+
+    return true
+end
 
 mods.on_all_mods_loaded(function()
     local lib = rom.mods["adamant-ModpackLib"]
     assert(lib and lib.lifecycle and type(lib.lifecycle.registerCoordinator) == "function",
         "adamant-RunDirector_Core: adamant-ModpackLib is not loaded")
     lib.lifecycle.registerCoordinator(PACK_ID, config)
+    lib.lifecycle.registerCoordinatorRebuild(PACK_ID, rebuildFramework)
 end)
 
 local function init()
@@ -41,13 +66,14 @@ local function init()
     assert(Framework and type(Framework.init) == "function",
         "adamant-RunDirector_Core: adamant-ModpackFramework is not loaded")
 
-    Framework.init({
+    frameworkParams = {
         packId      = PACK_ID,
         windowTitle = "Run Director",
         config      = config,
         def         = def,
         hideHashMarker = true,
-    })
+    }
+    Framework.init(frameworkParams)
 end
 
 local loader = reload.auto_single()
