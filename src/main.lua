@@ -29,6 +29,13 @@ local def = {
 
 local PACK_ID = "run-director"
 
+mods.on_all_mods_loaded(function()
+    local lib = rom.mods["adamant-ModpackLib"]
+    assert(lib and lib.lifecycle and type(lib.lifecycle.registerCoordinator) == "function",
+        "adamant-RunDirector_Core: adamant-ModpackLib is not loaded")
+    lib.lifecycle.registerCoordinator(PACK_ID, config)
+end)
+
 local function init()
     local Framework = rom.mods["adamant-ModpackFramework"]
     assert(Framework and type(Framework.init) == "function",
