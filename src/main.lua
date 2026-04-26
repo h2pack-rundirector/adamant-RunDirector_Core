@@ -17,7 +17,7 @@ local reload  = mods['SGG_Modding-ReLoad']
 
 local config = chalk.auto('config.lua')
 
-local def = {
+local frameworkDef = {
     NUM_PROFILES    = #config.Profiles,
     defaultProfiles = {},
     moduleOrder = {
@@ -28,11 +28,18 @@ local def = {
 }
 
 local PACK_ID = "run-director"
-local frameworkParams = nil
+local frameworkParams = {
+    packId = PACK_ID,
+    windowTitle = "Run Director",
+    config = config,
+    def = frameworkDef,
+    hideHashMarker = true,
+}
+local frameworkInitialized = false
 local rebuildInProgress = false
 
 local function rebuildFramework()
-    if rebuildInProgress or not frameworkParams then
+    if rebuildInProgress or not frameworkInitialized then
         return false
     end
 
@@ -66,14 +73,8 @@ local function init()
     assert(Framework and type(Framework.init) == "function",
         "adamant-RunDirector_Core: adamant-ModpackFramework is not loaded")
 
-    frameworkParams = {
-        packId      = PACK_ID,
-        windowTitle = "Run Director",
-        config      = config,
-        def         = def,
-        hideHashMarker = true,
-    }
     Framework.init(frameworkParams)
+    frameworkInitialized = true
 end
 
 local loader = reload.auto_single()
