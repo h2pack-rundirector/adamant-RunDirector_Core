@@ -4,7 +4,7 @@ Run Director is a modular Hades II run-customization pack that gives you fine-gr
 
 ## What Run Director Provides
 
-The current gameplay modules focus on three parts of a run:
+The gameplay modules focus on three parts of a run:
 
 - Biome Control
   Shapes encounters inside each biome, including room timing for fountains, trials, shops, NPC rooms, minibosses, and route-specific reward behavior. It also includes controls for first-boon preferences and Dream Dive biome order.

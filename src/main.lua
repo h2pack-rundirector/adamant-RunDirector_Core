@@ -33,6 +33,7 @@ local FRAMEWORK_OPTS = {
         "BoonBans",
         "BiomeControl",
     },
+    hideHashMarker = true,
 }
 local frameworkInitialized = false
 local rebuildInProgress = false
