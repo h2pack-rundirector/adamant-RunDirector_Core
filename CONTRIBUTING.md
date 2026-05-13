@@ -6,7 +6,7 @@ Thin coordinator for the Run Director modpack. Owns pack identity, config, and d
 
 ```
 src/
-  main.lua    -- ENVY wiring, config, def, Framework.init call
+  main.lua    -- ENVY wiring, config, def, Framework.tryInit call
 config.lua    -- Chalk config schema (ModEnabled, DebugMode, Profiles)
 ```
 

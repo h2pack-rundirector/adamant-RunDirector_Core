@@ -43,17 +43,15 @@ local function rebuildFramework()
         return false
     end
 
-    assert(Framework and type(Framework.init) == "function",
+    assert(Framework and type(Framework.tryInit) == "function",
         "adamant-RunDirector_Core: adamant-ModpackFramework is not loaded")
 
     rebuildInProgress = true
-    local ok, err = xpcall(function()
-        Framework.init(PACK_ID, WINDOW_TITLE, config, #config.Profiles, DEFAULT_PROFILES, FRAMEWORK_OPTS)
-    end, debug.traceback)
+    local ok = Framework.tryInit(PACK_ID, WINDOW_TITLE, config, #config.Profiles, DEFAULT_PROFILES, FRAMEWORK_OPTS)
     rebuildInProgress = false
 
     if not ok then
-        error(string.format("Framework rebuild failed for pack '%s': %s", PACK_ID, tostring(err)))
+        return false
     end
 
     return true
@@ -67,10 +65,10 @@ mods.on_all_mods_loaded(function()
 end)
 
 local function init()
-    assert(Framework and type(Framework.init) == "function",
+    assert(Framework and type(Framework.tryInit) == "function",
         "adamant-RunDirector_Core: adamant-ModpackFramework is not loaded")
-    Framework.init(PACK_ID, WINDOW_TITLE, config, #config.Profiles, DEFAULT_PROFILES, FRAMEWORK_OPTS)
-    frameworkInitialized = true
+    local ok = Framework.tryInit(PACK_ID, WINDOW_TITLE, config, #config.Profiles, DEFAULT_PROFILES, FRAMEWORK_OPTS)
+    frameworkInitialized = ok == true
 end
 
 local loader = reload.auto_single()
