@@ -58,10 +58,10 @@ local function rebuildFramework()
 end
 
 mods.on_all_mods_loaded(function()
-    assert(lib and lib.lifecycle and type(lib.lifecycle.registerCoordinator) == "function",
+    assert(lib and lib.coordinator and type(lib.coordinator.register) == "function",
         "adamant-RunDirector_Core: adamant-ModpackLib is not loaded")
-    lib.lifecycle.registerCoordinator(PACK_ID, config)
-    lib.lifecycle.registerCoordinatorRebuild(PACK_ID, rebuildFramework)
+    lib.coordinator.register(PACK_ID, config)
+    lib.coordinator.registerRebuild(PACK_ID, rebuildFramework)
 end)
 
 local function init()
